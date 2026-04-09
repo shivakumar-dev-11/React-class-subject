@@ -1,9 +1,7 @@
 import "./App.css";
 
 function Parent() {
-  const name = "shiva";
-  const age = 19;
-  return <GrandChild name={name} age={age} />;
+  return <GrandChild name="shiva" age={19} />;
 }
 
 function Child() {
