@@ -20,4 +20,4 @@ function App(props) {
   );
 }
 
-export default Parent; // render Parent instead
+export default Parent;
