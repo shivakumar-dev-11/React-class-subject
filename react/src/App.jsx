@@ -3,14 +3,14 @@ import "./App.css";
 function Parent() {
   const name = "shiva";
   const age = 19;
-  return <App name={name} age={age} />;
+  return <GrandChild name={name} age={age} />;
 }
 
 function Child() {
-  return <App />;
+  return <GrandChild />;
 }
 
-function App(props) {
+function GrandChild(props) {
   return (
     <>
       <h1>Hello world</h1>
