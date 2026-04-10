@@ -1,11 +1,11 @@
 import "./App.css";
 
 function Parent() {
-  return <GrandChild name="shiva" age={19} />;
+  return <Child name="shiva" age={19} />;
 }
 
-function Child() {
-  return <GrandChild />;
+function Child(props) {
+  return <GrandChild name="shiva" age={19} />;
 }
 
 function GrandChild(props) {
