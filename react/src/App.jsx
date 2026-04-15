@@ -1,21 +1,22 @@
 import "./App.css";
 
-function Parent() {
-  return <Child name="shiva" age={19} />;
-}
+import React, { useState } from "react";
 
-function Child(props) {
-  return <GrandChild name="shiva" age={19} />;
-}
+function Counter() {
+  const num = 0;
+  const [count, setCount] = useState(num);
 
-function GrandChild(props) {
   return (
-    <>
-      <h1>Hello world</h1>
-      <h1>Name = {props.name}</h1>
-      <h1>Age = {props.age}</h1>
-    </>
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <h1>Count: {count}</h1>
+
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <button onClick={() => setCount(count - 1)} style={{ margin: "0 10px" }}>
+        Decrement
+      </button>
+      <button onClick={() => setCount(`${num}`)}>Reset</button>
+    </div>
   );
 }
 
-export default Parent;
+export default Counter;
