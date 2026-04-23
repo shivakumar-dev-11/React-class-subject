@@ -1,70 +1,61 @@
 import "./App.css";
-
 import { useState } from "react";
-import EditTodo from "./EditTodo";
 
-const AddTodo = () => {
-  const [todos, setTodos] = useState([]);
-  const [inputValue, setInputValue] = useState("");
-  const [editingIndex, setEditingIndex] = useState(null);
+const TodoMain = () => {
+  const [Update, SetUpdate] = useState("");
+  const [Todo, SetNewTodo] = useState([]);
 
-  const inputOnChange = (event) => {
-    setInputValue(event.target.value);
+  const Content = (todos) => {
+    SetUpdate(todos.target.value);
   };
 
-  const TodoAdd = () => {
-    if (inputValue.trim() === "") return;
-    setTodos([...todos, inputValue]);
-    setInputValue("");
-  };
-
-  const saveEdit = (index, newText) => {
-    const updatedTodos = [...todos];
-    updatedTodos[index] = newText;
-    setTodos(updatedTodos);
-    setEditingIndex(null);
+  const AddTodo = () => {
+    SetNewTodo([...Todo, Update]);
+    SetUpdate("");
   };
 
   return (
     <>
-      <h1>Add Todo</h1>
-      <input
-        placeholder="Add a new todo..."
-        onChange={inputOnChange}
-        value={inputValue}
-      />
-      <button type="submit" onClick={TodoAdd}>
-        Add Todo
-      </button>
-
-      <div style={{ marginTop: "20px" }}>
-        {todos.map((todo, index) => (
-          <div
-            key={index}
-            style={{ display: "flex", alignItems: "center", gap: "10px" }}
-          >
-            {editingIndex === index ? (
-              <EditTodo
-                todo={todo}
-                onSave={(newText) => saveEdit(index, newText)}
-                onCancel={() => setEditingIndex(null)}
-              />
-            ) : (
-              <>
-                <h3>{todo}</h3>
-                <button
-                  onClick={() => setTodos(todos.filter((_, i) => i !== index))}
-                >
-                  Delete
-                </button>
-                <button onClick={() => setEditingIndex(index)}>Edit</button>
-              </>
-            )}
-          </div>
-        ))}
+      <h1>Todo Application</h1>
+      <div>
+        <div className="flex">
+          <input onChange={Content}></input>
+        </div>
+        <div>
+          <button onClick={AddTodo}>ADD</button>
+        </div>
+      </div>
+      <div
+        style={{
+          marginTop: "20px",
+          display: "flex",
+          gap: "10px",
+          justifyContent: "center",
+        }}
+      >
+        {Todo.map((todos, index) => {
+          return (
+            <div
+              key={index}
+              style={{
+                marginTop: "10px",
+                display: "flex",
+                flexDirection: "row",
+                gap: "40px",
+                justifyContent: "center",
+              }}
+            >
+              <h1>{todos}</h1>
+              <button
+                onClick={() => SetNewTodo(Todo.filter((_, i) => i !== index))}
+              >
+                Delete
+              </button>
+            </div>
+          );
+        })}
       </div>
     </>
   );
 };
-
-export default AddTodo;
+export default TodoMain;
