@@ -40,8 +40,7 @@ const TodoMain = () => {
               style={{
                 marginTop: "10px",
                 display: "flex",
-                flexDirection: "row",
-                gap: "40px",
+                gap: "10px",
                 justifyContent: "center",
               }}
             >
