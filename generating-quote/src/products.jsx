@@ -36,10 +36,10 @@ function Products() {
         type="text"
         placeholder="Search for products"
       />
-      {products.length > 1 ? (
+      {products.length > 0 ? (
         products.map((product) => (
           <div key={product.id}>
-            <img src={product.images?.[1]} alt="product" width="120" />
+            <img src={product.images?.[0]} alt="product" width="120" />
             <h3>{product.title}</h3>
             <p>{product.category.name}</p>
             <h4>${product.price}</h4>
